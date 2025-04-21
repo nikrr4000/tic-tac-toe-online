@@ -23,6 +23,7 @@ async function createGame (game: GameIdleEntity): Promise<GameEntity> {
         data: {
             status: game.status,
             id: game.id,
+            field: Array(9).fill(null),
             players: {
                 connect: {id: game.creator.id}
             }
@@ -78,4 +79,4 @@ function dbGameToGameEntity (game: Game & {
     }
 }
 
-export const gameRepository = { gamesList }
+export const gameRepository = { gamesList, createGame }
