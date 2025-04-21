@@ -11,32 +11,6 @@ async function main(): Promise<void> {
         rating: 1000
       }
     })
-
-    await prisma.game.create({
-      data: {
-        field: Array(9).fill(null),
-        status: "idle",
-        players: {
-          connect: {
-            id: user.id
-          }
-        }
-      },
-    });
-
-    await prisma.game.create({
-      data: {
-        field: Array(9).fill(null),
-        status: "idle",
-        players: {
-          connect: {
-            id: user.id
-          }
-        }
-      },
-    });
-
-    console.log("Database seeded successfully");
   } catch (error) {
     console.error("Error seeding database:", error);
     throw error;
