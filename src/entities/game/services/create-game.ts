@@ -20,7 +20,8 @@ export async function createGame (player: PlayerEntity) {
     const createdGame = await gameRepository.createGame({
         id: cuid(),
         creator: player,
-        status: 'idle'
+        status: 'idle',
+        field: Array(9).fill(null)
     })
 
     return right(createdGame)

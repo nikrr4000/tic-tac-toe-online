@@ -23,7 +23,7 @@ async function createGame (game: GameIdleEntity): Promise<GameEntity> {
         data: {
             status: game.status,
             id: game.id,
-            field: Array(9).fill(null),
+            field: game.field,
             players: {
                 connect: {id: game.creator.id}
             }
@@ -35,6 +35,20 @@ async function createGame (game: GameIdleEntity): Promise<GameEntity> {
     })
 
     return dbGameToGameEntity(createdGame)
+}
+
+async function getGame(where?: Prisma.GameWhereInput) {
+    const game = await prisma.game.findFirst({
+        where,
+        include:{
+            winner: true,
+            players: true
+        }
+    })
+    if (game) {
+        return dbGameToGameEntity(game)
+    }
+    return undefined
 }
 
 function dbGameToGameEntity (game: Game & {
@@ -80,4 +94,4 @@ function dbGameToGameEntity (game: Game & {
     }
 }
 
-export const gameRepository = { gamesList, createGame }
+export const gameRepository = { gamesList, createGame, getGame }

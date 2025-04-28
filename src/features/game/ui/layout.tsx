@@ -2,7 +2,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/shared/u
 import React from "react";
 
 export function GameLayout({status, field, players}: {
-    status: React.ReactNode, field: React.ReactNode, players?: React.ReactNode
+    status: React.ReactNode, field?: React.ReactNode, players?: React.ReactNode
 }) {
     return <Card>
         <CardHeader>
