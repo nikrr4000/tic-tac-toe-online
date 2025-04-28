@@ -2177,6 +2177,7 @@ export namespace Prisma {
     login: string | null
     rating: number | null
     passwordHash: string | null
+    salt: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2184,6 +2185,7 @@ export namespace Prisma {
     login: string | null
     rating: number | null
     passwordHash: string | null
+    salt: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2191,6 +2193,7 @@ export namespace Prisma {
     login: number
     rating: number
     passwordHash: number
+    salt: number
     _all: number
   }
 
@@ -2208,6 +2211,7 @@ export namespace Prisma {
     login?: true
     rating?: true
     passwordHash?: true
+    salt?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2215,6 +2219,7 @@ export namespace Prisma {
     login?: true
     rating?: true
     passwordHash?: true
+    salt?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2222,6 +2227,7 @@ export namespace Prisma {
     login?: true
     rating?: true
     passwordHash?: true
+    salt?: true
     _all?: true
   }
 
@@ -2316,6 +2322,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2342,6 +2349,7 @@ export namespace Prisma {
     login?: boolean
     rating?: boolean
     passwordHash?: boolean
+    salt?: boolean
     games?: boolean | User$gamesArgs<ExtArgs>
     winnerGames?: boolean | User$winnerGamesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2352,6 +2360,7 @@ export namespace Prisma {
     login?: boolean
     rating?: boolean
     passwordHash?: boolean
+    salt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2359,6 +2368,7 @@ export namespace Prisma {
     login?: boolean
     rating?: boolean
     passwordHash?: boolean
+    salt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2366,9 +2376,10 @@ export namespace Prisma {
     login?: boolean
     rating?: boolean
     passwordHash?: boolean
+    salt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "login" | "rating" | "passwordHash", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "login" | "rating" | "passwordHash" | "salt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     games?: boolean | User$gamesArgs<ExtArgs>
     winnerGames?: boolean | User$winnerGamesArgs<ExtArgs>
@@ -2388,6 +2399,7 @@ export namespace Prisma {
       login: string
       rating: number
       passwordHash: string
+      salt: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2817,6 +2829,7 @@ export namespace Prisma {
     readonly login: FieldRef<"User", 'String'>
     readonly rating: FieldRef<"User", 'Int'>
     readonly passwordHash: FieldRef<"User", 'String'>
+    readonly salt: FieldRef<"User", 'String'>
   }
     
 
@@ -3300,7 +3313,8 @@ export namespace Prisma {
     id: 'id',
     login: 'login',
     rating: 'rating',
-    passwordHash: 'passwordHash'
+    passwordHash: 'passwordHash',
+    salt: 'salt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3491,6 +3505,7 @@ export namespace Prisma {
     login?: StringFilter<"User"> | string
     rating?: IntFilter<"User"> | number
     passwordHash?: StringFilter<"User"> | string
+    salt?: StringFilter<"User"> | string
     games?: GameListRelationFilter
     winnerGames?: GameListRelationFilter
   }
@@ -3500,6 +3515,7 @@ export namespace Prisma {
     login?: SortOrder
     rating?: SortOrder
     passwordHash?: SortOrder
+    salt?: SortOrder
     games?: GameOrderByRelationAggregateInput
     winnerGames?: GameOrderByRelationAggregateInput
   }
@@ -3512,6 +3528,7 @@ export namespace Prisma {
     login?: StringFilter<"User"> | string
     rating?: IntFilter<"User"> | number
     passwordHash?: StringFilter<"User"> | string
+    salt?: StringFilter<"User"> | string
     games?: GameListRelationFilter
     winnerGames?: GameListRelationFilter
   }, "id">
@@ -3521,6 +3538,7 @@ export namespace Prisma {
     login?: SortOrder
     rating?: SortOrder
     passwordHash?: SortOrder
+    salt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3536,6 +3554,7 @@ export namespace Prisma {
     login?: StringWithAggregatesFilter<"User"> | string
     rating?: IntWithAggregatesFilter<"User"> | number
     passwordHash?: StringWithAggregatesFilter<"User"> | string
+    salt?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type GameCreateInput = {
@@ -3602,6 +3621,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
     games?: GameCreateNestedManyWithoutPlayersInput
     winnerGames?: GameCreateNestedManyWithoutWinnerInput
   }
@@ -3611,6 +3631,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
     games?: GameUncheckedCreateNestedManyWithoutPlayersInput
     winnerGames?: GameUncheckedCreateNestedManyWithoutWinnerInput
   }
@@ -3620,6 +3641,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
     games?: GameUpdateManyWithoutPlayersNestedInput
     winnerGames?: GameUpdateManyWithoutWinnerNestedInput
   }
@@ -3629,6 +3651,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
     games?: GameUncheckedUpdateManyWithoutPlayersNestedInput
     winnerGames?: GameUncheckedUpdateManyWithoutWinnerNestedInput
   }
@@ -3638,6 +3661,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3645,6 +3669,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3652,6 +3677,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3854,6 +3880,7 @@ export namespace Prisma {
     login?: SortOrder
     rating?: SortOrder
     passwordHash?: SortOrder
+    salt?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -3865,6 +3892,7 @@ export namespace Prisma {
     login?: SortOrder
     rating?: SortOrder
     passwordHash?: SortOrder
+    salt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3872,6 +3900,7 @@ export namespace Prisma {
     login?: SortOrder
     rating?: SortOrder
     passwordHash?: SortOrder
+    salt?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4204,6 +4233,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
     winnerGames?: GameCreateNestedManyWithoutWinnerInput
   }
 
@@ -4212,6 +4242,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
     winnerGames?: GameUncheckedCreateNestedManyWithoutWinnerInput
   }
 
@@ -4225,6 +4256,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
     games?: GameCreateNestedManyWithoutPlayersInput
   }
 
@@ -4233,6 +4265,7 @@ export namespace Prisma {
     login: string
     rating: number
     passwordHash: string
+    salt?: string
     games?: GameUncheckedCreateNestedManyWithoutPlayersInput
   }
 
@@ -4265,6 +4298,7 @@ export namespace Prisma {
     login?: StringFilter<"User"> | string
     rating?: IntFilter<"User"> | number
     passwordHash?: StringFilter<"User"> | string
+    salt?: StringFilter<"User"> | string
   }
 
   export type UserUpsertWithoutWinnerGamesInput = {
@@ -4283,6 +4317,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
     games?: GameUpdateManyWithoutPlayersNestedInput
   }
 
@@ -4291,6 +4326,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
     games?: GameUncheckedUpdateManyWithoutPlayersNestedInput
   }
 
@@ -4389,6 +4425,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
     winnerGames?: GameUpdateManyWithoutWinnerNestedInput
   }
 
@@ -4397,6 +4434,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
     winnerGames?: GameUncheckedUpdateManyWithoutWinnerNestedInput
   }
 
@@ -4405,6 +4443,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     passwordHash?: StringFieldUpdateOperationsInput | string
+    salt?: StringFieldUpdateOperationsInput | string
   }
 
   export type GameCreateManyWinnerInput = {

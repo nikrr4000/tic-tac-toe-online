@@ -1,3 +1,5 @@
+import { GameId, UserId } from "@/kernel/ids";
+
 export type GameEntity = 
     GameIdleEntity | 
     GameInProgressEntity | 
@@ -5,20 +7,21 @@ export type GameEntity =
     GameOveDrawEntity
 
 export type GameIdleEntity = {
-    id: string;
+    id: GameId;
     creator: PlayerEntity;
+    field: Field
     status: 'idle'
 }
 
 export type GameInProgressEntity = {
-    id: string;
+    id: GameId;
     players: PlayerEntity[];
     field: Field
     status: 'inProgress'
 };
 
 export type GameOverEntity = {
-    id: string;
+    id: GameId;
     players: PlayerEntity[];
     field: Field
     status: 'gameOver'
@@ -26,7 +29,7 @@ export type GameOverEntity = {
 };
 
 export type GameOveDrawEntity = {
-    id: string;
+    id: GameId;
     players: PlayerEntity[];
     field: Field
     status: 'gameOverDraw'
@@ -34,7 +37,7 @@ export type GameOveDrawEntity = {
 
 
 export type PlayerEntity = {
-    id:string;
+    id:UserId;
     login: string;
     rating: number;
 }
@@ -42,3 +45,21 @@ export type PlayerEntity = {
 export type Field = (Cell | null)[];
 export type Cell = GameSymbol | null
 export type GameSymbol = string
+
+export const GameSymbol = {
+    X: "X",
+    O: "0"
+}
+
+export const getGameCurrentStep = (game: GameInProgressEntity | GameOverEntity | GameOveDrawEntity) => {
+    const symbolIds = game.field.filter(s => s !== null).length
+
+    return symbolIds % 2 === 0 ? GameSymbol.X : GameSymbol.O
+}
+
+export const getNextSymbol = (gameSymbol: GameSymbol) => {
+    if (gameSymbol === GameSymbol.X) {
+        return GameSymbol.O
+    }
+    return GameSymbol.X
+}

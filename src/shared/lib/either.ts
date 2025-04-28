@@ -30,7 +30,7 @@ export const mapRight = <R, R2, L = unknown>(
  }
 
  export const mapLeft = <R, L, L2 = unknown>(
-    either: Either<L, R>, 
+    either: Either<L, R>,
     fn: (value: L) => L2,
  ): Either<L2, R> =>{
     if (either.type === 'left'){
