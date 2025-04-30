@@ -2,6 +2,7 @@ import { getGameById } from "@/entities/game/server";
 import { GameId } from "@/kernel/ids";
 import { sseStream } from "@/shared/lib/sse/server";
 import { NextRequest, NextResponse } from "next/server";
+import { gameEvents } from "../services/game-events";
 
 export async function getGameStream(
     req: NextRequest,
@@ -22,6 +23,12 @@ export async function getGameStream(
     } = sseStream(req)
 
     write(game)
-    addCloseListener(()=>{})
+
+    addCloseListener (
+        await gameEvents.addListener(game.id, (event) => {
+            write(event.data);
+        }
+    ))
+
     return response
 }

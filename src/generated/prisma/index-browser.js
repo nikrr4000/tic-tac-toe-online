@@ -125,6 +125,13 @@ exports.Prisma.GameScalarFieldEnum = {
   gameOverAt: 'gameOverAt'
 };
 
+exports.Prisma.GamePlayerScalarFieldEnum = {
+  id: 'id',
+  gameId: 'gameId',
+  userId: 'userId',
+  index: 'index'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   login: 'login',
@@ -167,6 +174,7 @@ exports.GameStatus = exports.$Enums.GameStatus = {
 
 exports.Prisma.ModelName = {
   Game: 'Game',
+  GamePlayer: 'GamePlayer',
   User: 'User'
 };
 

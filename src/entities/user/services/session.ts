@@ -1,8 +1,6 @@
-import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
 import { SessionEntity, UserEntity, userToSession } from '../domain'
 import { left, right } from '@/shared/lib/either'
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { routes } from '@/kernel/routes'
  
@@ -29,6 +27,8 @@ async function decrypt(session: string | undefined = '') {
 }
 
 async function addSession(user: UserEntity) {
+  const { cookies } = await import('next/headers')
+  
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   const sessionData = userToSession(user, expiresAt.toISOString())
   const session = await encrypt(sessionData)
@@ -45,11 +45,15 @@ async function addSession(user: UserEntity) {
 }
 
 async function deleteSession() {
+  const { cookies } = await import('next/headers')
+  
   const cookieStore = await cookies()
   cookieStore.delete('session')
 }
 
 async function verifySession ()  {
+  const { cookies } = await import('next/headers')
+  
   const cookie = (await cookies()).get('session')?.value
   const session = await decrypt(cookie)
  
