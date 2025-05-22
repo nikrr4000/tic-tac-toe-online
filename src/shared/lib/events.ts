@@ -1,6 +1,4 @@
-import amqplib, {ChannelModel, Connection} from "amqplib"
-import { channel } from "diagnostics_channel";
-import { date } from "zod";
+import amqplib, { ChannelModel } from "amqplib"
 
 let connection: ChannelModel | undefined = undefined;
 
